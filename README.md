@@ -1,8 +1,10 @@
 # ethereum-validator
 
 This project installs the necessary software for an Ethereum validator.
-    An execution client: [Reth](https://reth.rs/)
-    An consensus client: [Lighthouse](https://lighthouse-book.sigmaprime.io/)
+
+An execution client: [Reth](https://reth.rs/)
+An consensus client: [Lighthouse](https://lighthouse-book.sigmaprime.io/)
+
 
 ***Note: This project does not create a new machine yet. For now, it only installs the necessary software***
 
@@ -27,38 +29,38 @@ chmod +x provision.sh
 ./provision.sh 
 ```
 
-    1.1. Generate key pairs
+#### 1.1. Generate key pairs
 
-    Withdrawal address
-    Your withdrawal address should be a regular Ethereum account that you control, Setting this address establishes your validator withdrawal credentials, and permanently links the chosen execution address to your validator. 
+Withdrawal address
+Your withdrawal address should be a regular Ethereum account that you control, Setting this address establishes your validator withdrawal credentials, and permanently links the chosen execution address to your validator. 
 
-    Follow the procedures described in this link:
-    https://hoodi.launchpad.ethereum.org/en/generate-keys
+Follow the procedures described in this link:
+https://hoodi.launchpad.ethereum.org/en/generate-keys
 
-    ```sh
-    ./deposit new-mnemonic --compounding --num_validators 1 --amount 32 --chain hoodi --withdrawal_address <YOUR_ETH_ADDRESS>
-    ```
+```sh
+./deposit new-mnemonic --compounding --num_validators 1 --amount 32 --chain hoodi --withdrawal_address <YOUR_ETH_ADDRESS>
+```
 
-    You must secure your mnemonic phares
+**You must secure your mnemonic phares**
 
-    1.2 Upload deposit data.
-    The deposit_data-[timestamp].json file is located in the /ethstaker-deposit-cli/validator_keys directory that you created in the previous step.
+### 1.2 Upload deposit data.
 
-    Upload the deposit data file you just generated in this site:
-    https://hoodi.launchpad.ethereum.org/en/upload-deposit-data
+The deposit_data-[timestamp].json file is located in the /ethstaker-deposit-cli/validator_keys directory that you created in the previous step.
+
+Upload the deposit data file you just generated in this site:
+https://hoodi.launchpad.ethereum.org/en/upload-deposit-data
 
 
-    1.2 Import validator keys
+### 1.2 Import validator keys
 
-    login back to the machine and run:
+login back to the machine and run:
 
-    ```sh
-    lighthouse --network hoodi account validator import \
-        --directory /tmp/keys \
-        --datadir /data/ethereum/hoodi/lighthouse \
-        --network hoodi
-    ```
-
+```sh
+lighthouse --network hoodi account validator import \
+    --directory /tmp/keys \
+    --datadir /data/ethereum/hoodi/lighthouse \
+    --network hoodi
+```
 
 ### 2. Start Ethereum Consensus and Execution
 
