@@ -3,6 +3,7 @@
 This project installs the necessary software for an Ethereum validator.
 
 An execution client: [Reth](https://reth.rs/)
+
 An consensus client: [Lighthouse](https://lighthouse-book.sigmaprime.io/)
 
 
@@ -10,19 +11,23 @@ An consensus client: [Lighthouse](https://lighthouse-book.sigmaprime.io/)
 
 ## Requeriments
 An linux machine with ubuntu/debian
-    Recommended System Requirements:
-        CPU: Quad-core AMD Ryzen, Intel Broadwell, ARMv8 or newer
-        Memory: 32 GB RAM*
-        Storage: 2 TB solid state drive
-        Network: 100 Mb/s download, 20 Mb/s upload broadband connection
+
+Recommended System Requirements:
+
+CPU: Quad-core AMD Ryzen, Intel Broadwell, ARMv8 or newer
+Memory: 32 GB RAM
+Storage: 2 TB solid state drive
+Network: 100 Mb/s download, 20 Mb/s upload broadband connection
+
 
 ### 1. Install the packages
 
-    Install system requeriments
-    Install ethereum execution
-    Install ethereum consensus
+Install system requeriments
+Install ethereum execution
+Install ethereum consensus
+Create systemd service
 
-    login to the machine and run:
+Log in to the machine and run:
 
 ```sh
 chmod +x provision.sh
@@ -45,7 +50,7 @@ https://hoodi.launchpad.ethereum.org/en/generate-keys
 
 ### 1.2 Upload deposit data.
 
-The deposit_data-[timestamp].json file is located in the /ethstaker-deposit-cli/validator_keys directory that you created in the previous step.
+The ```deposit_data-[timestamp].json``` file is located in the ```/ethstaker-deposit-cli/validator_keys``` directory that you created in the previous step.
 
 Upload the deposit data file you just generated in this site:
 https://hoodi.launchpad.ethereum.org/en/upload-deposit-data
