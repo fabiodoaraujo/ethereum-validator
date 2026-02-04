@@ -2,9 +2,9 @@
 
 This project installs the necessary software for an Ethereum validator.
 
-An execution client: [Reth](https://reth.rs/)
+- An execution client: [Reth](https://reth.rs/)
 
-An consensus client: [Lighthouse](https://lighthouse-book.sigmaprime.io/)
+- An consensus client: [Lighthouse](https://lighthouse-book.sigmaprime.io/)
 
 
 ***Note: This project does not create a new machine yet. For now, it only installs the necessary software***
@@ -15,16 +15,22 @@ An linux machine with ubuntu/debian
 Recommended System Requirements:
 
 CPU: Quad-core AMD Ryzen, Intel Broadwell, ARMv8 or newer
+
 Memory: 32 GB RAM
+
 Storage: 2 TB solid state drive
+
 Network: 100 Mb/s download, 20 Mb/s upload broadband connection
 
 
 ### 1. Install the packages
 
 Install system requeriments
+
 Install ethereum execution
+
 Install ethereum consensus
+
 Create systemd service
 
 Log in to the machine and run:
@@ -37,6 +43,7 @@ chmod +x provision.sh
 #### 1.1. Generate key pairs
 
 Withdrawal address
+
 Your withdrawal address should be a regular Ethereum account that you control, Setting this address establishes your validator withdrawal credentials, and permanently links the chosen execution address to your validator. 
 
 Follow the procedures described in this link:
