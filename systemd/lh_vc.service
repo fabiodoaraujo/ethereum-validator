@@ -1,0 +1,13 @@
+[Unit]
+Description=Lighthouse Validator Client
+After=network.target lh_bn.service
+
+[Service]
+User=ethereum
+Type=simple
+ExecStart=/usr/local/bin/lighthouse vc     --network hoodi     --suggested-fee-recipient 0xYourEthAddressHere     --logfile-dir /data/ethereum/lighthouse/log     --datadir /data/ethereum/lighthouse
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

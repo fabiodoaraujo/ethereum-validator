@@ -1,0 +1,13 @@
+[
+  {
+    "pubkey": "abc123abc123abc123",
+    "withdrawal_credentials": "abc123abc123abc123",
+    "amount": 32000000000,
+    "signature": "abc123abc123abc123",
+    "deposit_message_root": "abc123abc123abc123",
+    "deposit_data_root": "abc123abc123abc123",
+    "fork_version": "abc123abc123abc123",
+    "network_name": "hoodi",
+    "deposit_cli_version": "1.2.2"
+  }
+]

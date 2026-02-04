@@ -1,0 +1,13 @@
+[Unit]
+Description=Lighthouse Beacon Node
+After=network.target reth.service
+
+[Service]
+User=ethereum
+Type=simple
+ExecStart=/usr/local/bin/lighthouse bn     --network hoodi     --logfile-debug-level info     --execution-endpoint http://127.0.0.1:8551     --execution-jwt /data/ethereum/jwt.hex     --checkpoint-sync-url https://hoodi.checkpoint.sigp.io     --http     --logfile-dir /data/ethereum/lighthouse/log     --datadir /data/ethereum/lighthouse
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

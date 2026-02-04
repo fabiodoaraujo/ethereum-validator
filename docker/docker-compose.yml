@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # 1. Execution Layer: Reth
+  reth:
+    image: ghcr.io/paradigmxyz/reth:latest
+    container_name: reth
+    restart: unless-stopped
+    ports:
+      - "30303:30303/tcp" # P2P
+      - "30303:30303/udp" # P2P
+      - "8545:8545"       # RPC
+    volumes:
+      - /data/ethereum/:/data/ethereum/reth
+      - /data/ethereum/jwt:/data/ethereum/jwt
+    command: >
+      node
+      --chain hoodi
+      --authrpc.addr 0.0.0.0
+      --authrpc.port 8551
+      --authrpc.jwtsecret /data/ethereum/jwt/jwt.hex
+      --http
+      --http.addr 0.0.0.0
+
+  # 2. Consensus Layer: Lighthouse Beacon Node
+  lighthouse-bn:
+    image: sigp/lighthouse:latest
+    container_name: lighthouse-bn
+    restart: unless-stopped
+    depends_on:
+      - reth
+    ports:
+      - "9000:9000/tcp" # P2P
+      - "9000:9000/udp" # P2P
+      - "5052:5052"      # Beacon API
+    volumes:
+      - /data/ethereum/:/data/ethereum/lighthouse
+      - /data/ethereum/jwt:/data/ethereum/jwt
+    command: >
+      lighthouse beacon_node
+      --network hoodi
+      --execution-endpoint http://reth:8551
+      --execution-jwt /data/ethereum/jwt/jwt.hex
+      --checkpoint-sync-url https://hoodi.checkpoint.sigp.io
+      --http
+      --http-address 0.0.0.0
+
+  # 3. Validator Client: Lighthouse VC
+  lighthouse-vc:
+    image: sigp/lighthouse:latest
+    container_name: lighthouse-vc
+    restart: unless-stopped
+    depends_on:
+      - lighthouse-bn
+    volumes:
+      - /data/ethereum/jwt:/data/ethereum/jwt/lighthouse
+    command: >
+      lighthouse validator_client
+      --network hoodi
+      --beacon-nodes http://lighthouse-bn:5052
+      --suggested-fee-recipient 0xYourEthAddressHere

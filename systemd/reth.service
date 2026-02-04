@@ -1,0 +1,15 @@
+[Unit]
+Description=Reth Execution Client
+After=network.target
+
+[Service]
+User=ethereum
+Group=ethereum
+Environment=RUST_LOG=info
+Type=simple
+ExecStart=/usr/local/bin/reth node     --chain hoodi     --http     --http.addr 0.0.0.0     --http.port 8545     --http.api eth,net,web3     --datadir /data/ethereum/reth     --authrpc.addr 127.0.0.1     --authrpc.port 8551     --authrpc.jwtsecret /data/ethereum/jwt.hex     --metrics 127.0.0.1:9001     --log.file.directory /data/ethereum/reth/log     --full
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
