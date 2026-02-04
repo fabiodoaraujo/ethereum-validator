@@ -6,11 +6,13 @@ This project will build from sources and install the necessary software for an E
 
 - An consensus client: [Lighthouse](https://lighthouse-book.sigmaprime.io/)
 
-***Note: This project does not yet create a new machine. For now, it only installs the necessary software on an existing Linux machine.***
+***Note: This project does not create a new machine. For now, it only installs the necessary software on an existing Linux machine.***
 
 
 |```provision.sh```       | build and install execution and consensus software |
+
 |```start-validator.sh``` | start execution and consensus software |
+
 |```check-health.sh```    | Validator Health check |
 
 
