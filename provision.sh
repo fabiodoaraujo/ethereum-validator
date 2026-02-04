@@ -3,6 +3,13 @@
 # Author: Fabio Sales
 # Objective: Install validator and execution layer software and dependencies.
 
+# Install system requeriments
+# Install ethereum execution from source
+# Install ethereum consensus from source
+# Create service user
+# Setup directories
+# Create systemd service
+
 # Load external config
 source ./configuration/config.sh
 
@@ -127,13 +134,15 @@ install_lighthouse() {
 
 check_version() {
     echo "######################################"
-    echo "   Versions "
+    echo "             Versions                 "
     echo "######################################"
 
     git --version
     rustc --version
     /usr/local/bin/reth --version
     /usr/local/bin/lighthouse --version
+
+    echo "######################################"
 }
 
 create_user() {

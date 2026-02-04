@@ -31,7 +31,7 @@ start_service() {
 # Main function to start all node components
 start_node() {
     echo "=========================================="
-    echo "   Ethereum Node Startup Sequence        "
+    echo "   Ethereum Node Startup Sequence         "
     echo "=========================================="
 
     for service in "${SERVICES[@]}"; do
@@ -42,7 +42,7 @@ start_node() {
     done
 
     echo "=========================================="
-    echo "All services started successfully!"
+    echo "   All services started successfully!     "
     echo "=========================================="
 }
 

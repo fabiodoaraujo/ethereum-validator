@@ -1,15 +1,22 @@
 # ethereum-validator
 
-This project installs the necessary software for an Ethereum validator.
+This project will build from sources and install the necessary software for an Ethereum validator.
 
 - An execution client: [Reth](https://reth.rs/)
 
 - An consensus client: [Lighthouse](https://lighthouse-book.sigmaprime.io/)
 
+***Note: This project does not yet create a new machine. For now, it only installs the necessary software on an existing Linux machine.***
 
-***Note: This project does not create a new machine yet. For now, it only installs the necessary software***
+
+|```provision.sh```       | build and install execution and consensus software |
+|```start-validator.sh``` | start execution and consensus software |
+|```check-health.sh```    | Validator Health check |
+
 
 ## Requeriments
+Setup your environment in the config file ```configuration/config.sh```
+
 An linux machine with ubuntu/debian
 
 Recommended System Requirements:
@@ -24,14 +31,6 @@ Network: 100 Mb/s download, 20 Mb/s upload broadband connection
 
 
 ### 1. Install the packages
-
-Install system requeriments
-
-Install ethereum execution
-
-Install ethereum consensus
-
-Create systemd service
 
 Log in to the machine and run:
 
@@ -55,7 +54,7 @@ https://hoodi.launchpad.ethereum.org/en/generate-keys
 
 **You must secure your mnemonic phares**
 
-### 1.2 Upload deposit data.
+### 1.2 Upload deposit data file.
 
 The ```deposit_data-[timestamp].json``` file is located in the ```/ethstaker-deposit-cli/validator_keys``` directory that you created in the previous step.
 
@@ -91,6 +90,7 @@ chmod +x check-health.sh
 ```
 
 ## todo
-- Create Terraform code to provision the infrastructure in the cloud.
+- Create scripts to start the validator using Docker. **Work in progress**
+- Create Terraform code to provision the infrastructure in the cloud. **Work in progress**
 - Create an Ansible code to install requirements and packages on the machine.
-- Create scripts to start the validator using Docker.
+
